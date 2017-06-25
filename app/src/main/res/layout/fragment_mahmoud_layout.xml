@@ -10,6 +10,6 @@
         android:textSize="20sp"
         android:id="@+id/txtv_send"
         android:background="#f10"
-        android:text="send message to activity"/>
+        android:text="send message to AliFragment"/>
 
 </LinearLayout>

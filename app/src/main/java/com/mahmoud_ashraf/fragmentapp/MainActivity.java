@@ -1,5 +1,6 @@
 package com.mahmoud_ashraf.fragmentapp;
 
+import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +37,18 @@ Button rep;
 
     @Override
     public void sendMessage(String message) {
-        Toast.makeText(MainActivity.this,message,Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(MainActivity.this,message,Toast.LENGTH_SHORT).show();
+        AliFragment fragment = new AliFragment();
+        Bundle args = new Bundle();
+        args.putString("msg",message);
+        fragment.setArguments(args);
+
+        getFragmentManager().
+                beginTransaction().
+                add(R.id.activity_main,fragment)
+                .commit();
+
+
     }
     //TODO (4) Create layout for fragment
 }

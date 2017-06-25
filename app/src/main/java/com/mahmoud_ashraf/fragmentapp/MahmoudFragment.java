@@ -67,9 +67,17 @@ public class MahmoudFragment extends Fragment {
                 if(sender==null){
                     sender = (Sender)getActivity();
                 }
-                sender.sendMessage("hey man:)");
+                sender.sendMessage("hey man from mahmoud fragment :)");
             }
         });
 
     }
+    //Todo(100) :The last thing is snd date from fragment to another
+    /***
+     * you have 2 options
+     * 1- using callback like in previous way
+     * 2- using setArguments like intent in activity
+     */
+    //Todo(101) we create new fragment called aliFragment
+    //Todo (102) edit the method sendMessage
 }
