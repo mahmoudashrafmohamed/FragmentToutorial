@@ -2,12 +2,16 @@ package com.mahmoud_ashraf.fragmentapp;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mahmoud_ashraf.fragmentapp.callback_Interface.Sender;
 
 /**
  * Created by mahmoud_ashraf on 6/25/2017.
@@ -16,6 +20,19 @@ import android.widget.Toast;
 //TODO (1) create class MahmoudFragment extends from Fragment
 
 public class MahmoudFragment extends Fragment {
+
+    TextView send;
+    //todo add Attach to attach fragment to activity to send data to it
+    Sender sender;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        sender = (Sender)getActivity();
+    }
+
+
+
+
 
 //TODO (2) override for onCreate,  onCreateView, onPause
 
@@ -32,6 +49,27 @@ public class MahmoudFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_mahmoud_layout,container,false);
+
+        View v = inflater.inflate(R.layout.fragment_mahmoud_layout,container,false);
+
+        send = (TextView)v.findViewById(R.id.txtv_send);
+
+        return v;
+    }
+
+    // After attach we wait to creating activity
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(sender==null){
+                    sender = (Sender)getActivity();
+                }
+                sender.sendMessage("hey man:)");
+            }
+        });
+
     }
 }
