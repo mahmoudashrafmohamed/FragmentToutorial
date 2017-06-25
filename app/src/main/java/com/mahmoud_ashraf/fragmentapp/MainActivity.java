@@ -2,13 +2,26 @@ package com.mahmoud_ashraf.fragmentapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
+Button rep;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        rep = (Button)findViewById(R.id.btn);
+        rep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().
+                        beginTransaction().
+                        replace(R.id.activity_main,new testFragment(),"test")
+                        .commit();
+            }
+        });
+
         // todo Adding the fragment here
         getFragmentManager().
                 beginTransaction().
